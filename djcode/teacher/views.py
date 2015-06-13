@@ -261,7 +261,6 @@ def QuestionAddForm1(request):
         chapter = form['Chapter']
         stem = form['Stem']
         answer = str(''.join(request.POST.getlist('SOptionc')))
-        print type(answer)
         try:
             difficulty = int(difficulty)
             chapter = int(chapter)
@@ -284,6 +283,50 @@ def QuestionAddForm1(request):
                                 OptionB = sOptionB,
                                 OptionC = sOptionC,
                                 OptionD = sOptionD,
+                                Type = type_i,
+                                Difficulty = difficulty,
+                                Flag = flag,
+                                Answer = answer,
+                                Chapter = chapter,
+                                CourseId = '00000001',
+                                Score = score,
+            )
+        return HttpResponse('<html>create successfully</html>')
+
+
+def QuestionAddForm2(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+    if request.POST:
+        form = request.POST
+        score = form['Score']
+        difficulty = form['Difficulty']
+        chapter = form['Chapter']
+        stem = form['JStem']
+        answer = form['JTr']
+        try:
+            difficulty = int(difficulty)
+            chapter = int(chapter)
+            score = int(score)
+        except ValueError:
+            return render_to_response('Q_add.html',{'pagename':'Add Questions'},context_instance=RequestContext(request))
+        if (difficulty<0)or (score<0) or (difficulty>6) or (chapter<0) or (stem is ''):#or (len(answer) is 0):
+            return render_to_response('Q_add.html',{'pagename':'Add Questions'},context_instance=RequestContext(request))
+        flag = 1
+        '''if answer>1:
+            type_i = 3
+        else:
+            type_i = 2'''
+        type_i = 1
+        questionId = re.sub(r'[-:\\.\\ ]','',str(datetime.datetime.now()))
+        length = len(str(request.user.username))
+        questionId = request.user.username + questionId[0:(20-length)]
+        Question.objects.create(QuestionId =questionId,
+                                Stem = stem,
+             #                   OptionA = sOptionA,
+              #                  OptionB = sOptionB,
+               #                 OptionC = sOptionC,
+                #                OptionD = sOptionD,
                                 Type = type_i,
                                 Difficulty = difficulty,
                                 Flag = flag,
