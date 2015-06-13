@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css\uikit.min.css" />
+        <script src="js\jquery-1.11.3.js"></script>
+        <script src="js\uikit.min.js"></script>
+        
+        <link rel="stylesheet" href="css\components\progress.min.css">
+        
+        <link rel="stylesheet" href="css\components\datepicker.min.css">
+        <script src="js\components\datepicker.min.js"></script>
+
+        <link rel="stylesheet" href="css\components\autocomplete.min.css">
+        <script src="js\components\autocomplete.min.js"></script>
+		
+		<link rel="stylesheet" href="css\components\sortable.min.css">
+		<script src="js\components\sortable.min.js"></script>
+    </head>
+
+    <body>
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+			<button class="uk-button">Paper<i class="uk-icon-caret-down"></i></button>
+			<div class="uk-dropdown">
+				<ul class="uk-nav uk-nav-dropdown">
+					<li><a href="P_manual.html">Manual</a></li>
+					<li><a href="P_auto.html">Auto</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+			<button class="uk-button">Question <i class="uk-icon-caret-down"></i></button>
+			<div class="uk-dropdown">
+				<ul class="uk-nav uk-nav-dropdown">
+					<li><a href="Q_add.html">Add</a></li>
+					<li><a href="Q_del_mod.html">Del/Modi</a></li>
+				</ul>
+			</div>
+		</div>	
+		<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+			<button class="uk-button"><a href="Analy.html">Analysis </a></button>
+
+		</div>	
+    <br>
+        <br>
+
+        <form action="" method="get">
+        <p>ch_up<span class="uk-autocomplete uk-form">
+          <input name="ch_up" type="number" id="ch_up">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           ch_lo</span><span class="uk-autocomplete uk-form">
+           <input name="ch_lo" type="number" id="ch_lo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           key </span><span class="uk-autocomplete uk-form">
+           <input name="keyword" type="text" id="keyword">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            dif_up </span><span class="uk-autocomplete uk-form">
+           <input name="dif_up" type="number" id="dif_up">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            dif_lo </span><span class="uk-autocomplete uk-form">
+           <input name="dif_lo" type="number" id="dif_lo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <input type="submit" VALUE="Search">
+	     </form>
+		
+		<<div class="uk-grid uk-grid-width-1-2">
+
+                                <div>
+
+                                    <h3>Question List</h3>
+
+                                    <div class="uk-sortable uk-margin" data-uk-sortable="{group:'test'}">
+                                        {% for  question in QuestionList %}
+										<div class="uk-margin">
+                                            <div class="uk-panel uk-panel-box">
+											<p>{{ question.Stem }}</p>>
+											{% if question.OptionA %}
+											<p>{{ question.OptionA }}</p>
+											<p>{{ question.OptionB }}</p>
+											{% if question.OptionC %}
+											<p>{{ question.OptionC }}</p>
+											<p>{{ question.OptionD }}</p>
+											{% endif %}
+											</div>
+                                        </div>
+										{% endfor %}
+                                    </div>
+
+                                </div>
+                                <div>
+
+                                    <h3>Your Paper</h3>
+
+                                    <div class="uk-sortable uk-margin" data-uk-sortable="{group:'test'}">
+                                    
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+							
+	<br>		
+	<form method="post">
+	<p align="center">DeadLine <input name="deadline" type="datetime" data-uk-datepicker="{format:'DD.MM.YYYY'}"> </p>				
+	 <p align="center"><input type="submit" VALUE="Generalize"></p>
+	</form>
+	   
+    
+</body>
+</html>
+

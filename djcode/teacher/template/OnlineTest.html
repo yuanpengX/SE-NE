@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <script type="text/javascript" src="jquery-1.11.3.js"></script>
+ <link rel="stylesheet" href="uikit-2.21.0/css/uikit.min.css" />
+        <script type="text/javascript" src="uikit-2.21.0/js/uikit.min.js"></script>
+<script type="text/javascript" src="uikit-2.21.0/js/components/pagination.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+{% for Question in QuestionList %}
+  <p>{{ Question.Stem }}</p>
+  {% if Question.Type==0 %}
+  <p>{{ Question.OptionA }}</p>
+  <p>{{ Question.OptionB }}</p>
+  <p>{{ Question.OptionC }}</p>
+  <p>{{Question. OptionD }}</p>
+  <form class="uk-form uk-margin">
+  <p>
+    <input type="checkbox" id="form-s-c1" checked>
+     <label for="form-s-c1">A</label>
+       <label><input type="checkbox"> B</label>
+      <label><input type="checkbox"> C</label>
+     <label><input type="checkbox"> D</label>
+                                </p>
+                            </form>
+  {% else %}
+   <form class="uk-form uk-margin">
+                                <p>
+                                    <input type="radio" id="form-s-r1" name="radio2" checked> <label for="form-s-r1">T</label>
+                                    <label><input type="radio" name="radio2"> F</label>
+
+                                </p>
+                              </form>
+                              {% endif %}{% endfor %}
+
+
+
+  <ul class="uk-pagination" data-uk-pagination="{items:1000, itemsOnPage:10, currentPage:50}"></ul>
+
+  <input type="button" value="Submit"/>
+   <input type="button" value="Save"/>
+                
+</body>
+</html>
