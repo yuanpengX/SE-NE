@@ -34,7 +34,7 @@
 		<!-- This is the container of the content items -->
 		<ul id="my-id" class="uk-switcher uk-margin">
     		<li>
-    			<form action='' method = 'post' name='form1'>{% csrf_token %}
+    			<form action='/addform1/' method = 'post' name='form1'>{% csrf_token %}
     			<table>
     				<tr>
     			   		<td>
@@ -46,7 +46,7 @@
     			   	</tr>
     			   	<tr>
     			   		<td>    			   		
-    			   		A <input type='checkbox' name='SOptionAc' value='A'>
+    			   		A <input type='checkbox' name='SOptionc' value='A'>
     			   		</td>
     			   		<td>
     			   			<input type='text' name='SOptionA'>
@@ -54,7 +54,7 @@
     			   	</tr>
     			    <tr>
     			   		<td>
-    			   		B <input type='checkbox' name='SOptionBc' value='B'>
+    			   		B <input type='checkbox' name='SOptionc' value='B'>
     			   		
     			   		</td>    			 
     			   		<td>
@@ -63,7 +63,7 @@
     			   	</tr>
     			   	<tr>
     			   		<td>
-    			   		C <input type='checkbox' name='SOptionCc' value='C'>
+    			   		C <input type='checkbox' name='SOptionc' value='C'>
     			   		</td>    			 
     			   		<td>
     			   			<input type='text' name='SOptionC'>
@@ -71,20 +71,36 @@
     			   	</tr>
     				<tr>
     			   		<td>
-    			   		D <input type='checkbox' name='SOptionDc' value='D'>
+    			   		D <input type='checkbox' name='SOptionc' value='D'>
     			   		</td>    			 
     			   		<td>
     			   			<input type='text' name='SOptionD'>
     			   		</td>
     			   	</tr>
+                    <tr>
+                        <td>
+                            Chapter
+                        </td>                
+                        <td>
+                            <input type="text" name='Chapter'>
+                        </td>
+                    </tr>
     				<tr>
     			   		<td>
-    						Deadline
+    						Difficulty
     			   		</td>    			 
     			   		<td>
-    						<input type="" data-uk-datepicker="{format:'DD.MM.YYYY'}" name='Deadline'>
+    						<input type="text" name='Difficulty'>
     			   		</td>
     			   	</tr>       			
+                    <tr>
+                        <td>
+                            Score
+                        </td>                
+                        <td>
+                            <input type="text" name='Score'>
+                        </td>
+                    </tr>
     			   	<tr>
     			   		<td>
     			   		</td>
@@ -98,7 +114,7 @@
     			</form>
     		</li>
     		<li>
-    		   	<form action='' method = 'post' name="form2">{% csrf_token %}
+    		   	<form action='/addform2/' method = 'post' name="form2">{% csrf_token %}
     			<table>
     				<tr>
     			   		<td>

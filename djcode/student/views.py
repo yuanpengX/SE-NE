@@ -18,7 +18,7 @@ def ViewClass(request):
         #if not ClassTable:
         #   return HttpResponseRedirect('/')
         #print  ClassTable
-        #i = 0
+           #i = 0
         #ClassList = []
         ClassList = []
         for ClassName in ClassTable:

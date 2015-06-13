@@ -9,20 +9,20 @@ class Question(models.Model):
     OptionB = models.CharField(max_length=100)
     OptionC = models.CharField(max_length=100, blank=True)
     OptionD = models.CharField(max_length=100, blank=True)
-    Type = models.IntegerField  # 1 choose 3- judge 1. 单选 2 , 多选 3. 判断
-    Difficulty = models.FloatField # 1-5 integer
-    Flag = models.BooleanField #whether modify flag
+    Type = models.IntegerField(null=True)  # 1 choose 3- judge 1. 单选 2 , 多选 3. 判断
+    Difficulty = models.IntegerField(null=True) # 1-5 integer
+    Flag = models.IntegerField(null=True) #whether modify flag
     Answer = models.CharField(max_length=20)
-    Chapter = models.CharField(max_length=20)
-    ClassId = models.CharField(max_length=20)
-    Score = models.IntegerField
+    Chapter = models.IntegerField()
+    CourseId = models.CharField(max_length=8,null=True)
+    Score = models.IntegerField(null=True)
 
 class Paper(models.Model):
     PaperId = models.CharField(max_length=20)
     PaperName = models.CharField(max_length=30)
     QId = models.CharField(max_length=400)
     Creator = models.CharField(max_length=20)  #TEAACHER'S id
-    ClassId = models.CharField(max_length=20)
+    ClassId = models.CharField(max_length=10)
     StartTime = models.DateTimeField
     Deadline = models.DateTimeField
     MaxScore = models.FloatField(null=True)

@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^$', startup),
     url(r'^class_list/$',student_view.ViewClass),
     url(r'^teacher/add/$',teacher_view.QuestionAdd),
+    url(r'^addform1/$',teacher_view.QuestionAddForm1),
+  #  url(r'^addform2/$',teacher_view.QuestionAddForm2),
 ]
