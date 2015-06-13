@@ -24,7 +24,14 @@ urlpatterns = [
     url(r'^ims/', include('IMS.urls')),
     url(r'^$', startup),
     url(r'^class_list/$',student_view.ViewClass),
-    url(r'^teacher/add/$',teacher_view.QuestionAdd),
+    url(r'^teacher/AddQuestion/$',teacher_view.QuestionAdd),
     url(r'^addform1/$',teacher_view.QuestionAddForm1),
-  #  url(r'^addform2/$',teacher_view.QuestionAddForm2),
+    url(r'^addform2/$',teacher_view.QuestionAddForm2),
+    url(r'^teacher/ModifyQuestion/$',teacher_view.QuestionModify),
+    url(r'^modify/([0-9a-zA-Z]{20})/$',teacher_view.QuestionM),
+    url(r'^teacher/DeleteQuestion/$',teacher_view.QuestionDelete),
+    url(r'^delete/([0-9a-zA-Z]{20})/$',teacher_view.QuestionD),
+    url(r'^test/$',teacher_view.newf),
+    url(r'^teacher/AutoGenerate/$',teacher_view.PaperAutoGenerate)
+
 ]

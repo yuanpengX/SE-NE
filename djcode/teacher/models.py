@@ -5,8 +5,8 @@ from django.db import models
 class Question(models.Model):
     QuestionId = models.CharField(max_length=20)
     Stem = models.CharField(max_length=2000)
-    OptionA = models.CharField(max_length=100)
-    OptionB = models.CharField(max_length=100)
+    OptionA = models.CharField(max_length=100,blank=True)
+    OptionB = models.CharField(max_length=100,blank=True)
     OptionC = models.CharField(max_length=100, blank=True)
     OptionD = models.CharField(max_length=100, blank=True)
     Type = models.IntegerField(null=True)  # 1 choose 3- judge 1. 单选 2 , 多选 3. 判断
@@ -23,8 +23,8 @@ class Paper(models.Model):
     QId = models.CharField(max_length=400)
     Creator = models.CharField(max_length=20)  #TEAACHER'S id
     ClassId = models.CharField(max_length=10)
-    StartTime = models.DateTimeField
-    Deadline = models.DateTimeField
+    #StartTime = models.DateTimeField()
+    Deadline = models.DateTimeField(null=True)
     MaxScore = models.FloatField(null=True)
     MinScore = models.FloatField(null=True)
     SumScore = models.FloatField(null=True)
