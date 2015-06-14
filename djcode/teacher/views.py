@@ -62,7 +62,7 @@ def PaperAutoGenerate(request):
         return HttpResponseRedirect('/login/');
     errors = []
     if request.POST:
-        print request.POST
+        #print request.POST
         cd = request.POST
         chL= cd['ChL']
         chH = cd['ChH']
@@ -73,7 +73,7 @@ def PaperAutoGenerate(request):
         Dead =cd['DeadLine']
         dead = re.sub(r'\.','-',Dead)
         mtime = cd['mytime']
-        if mtime is '':
+        if mtime is u'':
             errors.append('please input time!')
             return render_to_response('P_auto.html', {'errors': errors},context_instance=RequestContext(request))
         deadline = dead+' '+mtime
@@ -100,13 +100,16 @@ def PaperAutoGenerate(request):
         #print QuestList
         # add paper into database
         Qid = ''
+        mylist = []
         for questionL in QuestList:
             for question in questionL:
             #print type(question)
                 Qid = Qid + question.QuestionId
+                mylist.append(question)
+        print mylist
         paperid = re.sub(r'[-:\\.\\ ]','',str(datetime.datetime.now()))
-        paperid = request.user.username + paperid[0:15]
-        Paper.objects.create(PaperId= paperid,
+        paperid = request.user.username + paperid[0:(20-len(request.user.username))]
+        paper = Paper.objects.create(PaperId= paperid,
                             PaperName = Name,
                             QId = Qid,
                             Creator = request.user.username,
@@ -115,13 +118,30 @@ def PaperAutoGenerate(request):
             #                StartTime = datetime.datetime.now(),
                             #Deadline = Dead )
                              Deadline = deadline)
-        return HttpResponse('create paper successfully!')
-        #return render_to_response('PaperView.html', {'QuestList': QuestList},context_instance=RequestContext(request))
+        #return HttpResponse('create paper successfully!')
+        return render_to_response('P_view_tea.html', {'QuestionList': mylist,'Paper':paper},context_instance=RequestContext(request))
     return render_to_response('P_auto.html', {'errors': errors},context_instance=RequestContext(request))
+
+def PaperD(request,offset):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/');
+    if request.POST:
+        errors = []
+        try:
+            paper = Paper.objects.get(PaperId = offset)
+        except Paper.DoesNotExist:
+            raise Http404
+        paper.delete()
+        return render_to_response('P_auto.html', {'errors': errors},context_instance=RequestContext(request))
 '''
 def PaperManualGenerate(request):
-    return render_to_response('',locals())
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/');
+    if request.POST:
 
+    return render_to_response('',locals())
+'''
+'''
 def PaperAnalysis(request, offset):
     #this view generate PapeAnalysis with ID (get from url)
     PaperView = False

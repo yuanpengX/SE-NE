@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d1f3598-7ea9-48b4-a9d0-88a6ac0d76d0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djcode/teacher/adddata.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/db.sqlite3" afterPath="$PROJECT_DIR$/djcode/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/template/P_auto.html" afterPath="$PROJECT_DIR$/djcode/teacher/template/P_auto.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/template/Q_add.html" afterPath="$PROJECT_DIR$/djcode/teacher/template/Q_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/template/base.html" afterPath="$PROJECT_DIR$/djcode/teacher/template/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/models.py" afterPath="$PROJECT_DIR$/djcode/teacher/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/djcode/settings.py" afterPath="$PROJECT_DIR$/djcode/djcode/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/djcode/urls.py" afterPath="$PROJECT_DIR$/djcode/djcode/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/views.py" afterPath="$PROJECT_DIR$/djcode/teacher/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -36,12 +30,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djcode/teacher/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7161804">
-              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.1591512">
+              <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
               <folding>
                 <element signature="e#24#71#0" expanded="true" />
-                <element signature="e#9647#11348#0" expanded="false" />
-                <element signature="e#11690#13922#0" expanded="false" />
+                <element signature="e#962#1931#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -82,9 +75,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#3;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -123,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/djcode/djcode/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding>
                 <element signature="e#615#656#0" expanded="true" />
               </folding>
@@ -135,7 +126,7 @@
         <entry file="file://$PROJECT_DIR$/djcode/teacher/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -474,7 +465,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434201241260</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="自动生成试卷功能&#10;&#10;&#10;">
+      <created>1434239721312</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1434239721312</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -551,11 +548,19 @@
     <MESSAGE value="JIU" />
     <MESSAGE value="第一个可以用的内容&#10;" />
     <MESSAGE value="第一个可以用的内容-判断题&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="第一个可以用的内容-判断题&#10;&#10;" />
+    <MESSAGE value="自动生成试卷功能&#10;&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="自动生成试卷功能&#10;&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/djcode/teacher/views.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -905,9 +910,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#3;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -935,32 +938,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djcode/teacher/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djcode/djcode/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding>
             <element signature="e#615#656#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/djcode/teacher/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/djcode/teacher/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7161804">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.1591512">
+          <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
           <folding>
             <element signature="e#24#71#0" expanded="true" />
-            <element signature="e#9647#11348#0" expanded="false" />
-            <element signature="e#11690#13922#0" expanded="false" />
+            <element signature="e#962#1931#0" expanded="false" />
           </folding>
         </state>
       </provider>

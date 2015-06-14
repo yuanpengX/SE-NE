@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^teacher/DeleteQuestion/$',teacher_view.QuestionDelete),
     url(r'^delete/([0-9a-zA-Z]{20})/$',teacher_view.QuestionD),
     url(r'^test/$',teacher_view.newf),
-    url(r'^teacher/AutoGenerate/$',teacher_view.PaperAutoGenerate)
+    url(r'^teacher/AutoGenerate/$',teacher_view.PaperAutoGenerate),
+    url(r'^Cancel/([0-9a-zA-Z]{20})/$',teacher_view.PaperD)
 
 ]
