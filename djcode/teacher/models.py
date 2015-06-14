@@ -32,14 +32,14 @@ class Paper(models.Model):
 
 # database below is used to analyze
 class Score(models.Model):
-    StudentId = models.CharField(max_length=20)
-    PaperId = models.CharField(max_length=20)
-    ValidScore = models.FloatField(null=True)
-    SubmitTimes = models.IntegerField(null=True)
+    StudentId = models.CharField(max_length=20,)
+    PaperId = models.CharField(max_length=20,)
+    ValidScore = models.FloatField(null=True,)
+    SubmitTimes = models.IntegerField(null=True,)
 # Used to Analysis
 class History(models.Model):
     PaperId = models.CharField(max_length=20)
-    StudentId = models.CharField(max_length=20)
+    StudentId = models.CharField(max_length=10)
     QIdError = models.CharField(max_length=20)
 
 class OnAuth(models.Model):

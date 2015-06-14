@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from django.http import   HttpResponseRedirect,Http404
-from teacher.models import Paper,Score,Question,Score
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect,Http404
+from teacher.models import Paper,Score,Question,Score,History
 from IMS.models import Class_info,Student_user,Course_info,Faculty_user,class_table
 import re
+from django.template.context import RequestContext
 # Create your views here.
 
 def ViewClass(request):
@@ -28,20 +30,22 @@ def ViewClass(request):
             ClassList.append({'Name': CourseName+' '+ClassId,'Url':request.get_host()+'/student/'+ClassId+'/'})
         return render_to_response('Choose_Class.html',{'ClassList':ClassList})
 
-def ViewPaper(request,offset):
+def ViewPaper(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/ims/')
     if request.method =='GET':
-        ClassID = offset
-        PaperList = Paper.objects.filter(ClassId = ClassID)
-        if not PaperList:
-            raise Http404()
-        for paperid in PaperList:
-            P = Score.objects.filter(StudentId=request.user.name,ClassId=ClassID,PaperId=paperid['PaperId'])
-            paperid['ValidScore'] = P.ValidScore
-            paperid['SubmitTime'] = P.SubmitTime
-            paperid['URL'] = request.get_host()+'/student/test/'+paperid.PaperId+'/'
-        return render_to_response('index',{'PaperList':PaperList})
+        ClassID = '0000000001'
+        Paperlist = Paper.objects.filter(ClassId = ClassID)
+        PaperList =[]
+        for paperid in Paperlist:
+            #P = Score.objects.filter(StudentId=request.user.username,ClassId=ClassID,PaperId=paperid.PaperId)
+            try:
+                history = Score.objects.get(StudentId=request.user.username,PaperId = paperid.PaperId)
+            except Score.DoesNotExist:
+                history=Score.objects.create(StudentId=request.user.username,PaperId = paperid.PaperId,ValidScore=0, SubmitTimes=0)
+            paperInfo = {'PaperName':paperid.PaperName,'ValidScore':history.ValidScore,'SubmitTime':history.SubmitTimes,'URL':'/student/test/'+paperid.PaperId+'/','DeadLine':paperid.Deadline}
+            PaperList.append(paperInfo)
+        return render_to_response('P_viewlist_stu.html',locals(),context_instance=RequestContext(request))
 
 def OnlinePaper(request,offset):
     if not request.user.is_authenticated():

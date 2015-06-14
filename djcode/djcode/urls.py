@@ -35,5 +35,5 @@ urlpatterns = [
     url(r'^teacher/AutoGenerate/$',teacher_view.PaperAutoGenerate),
     url(r'^Cancel/([0-9a-zA-Z]{20})/$',teacher_view.PaperD),
     url(r'^teacher/ManualGenerate/$',teacher_view.PaperManualGenerate),
-
+    url(r'^student/ViewPaper/$',student_view.ViewPaper)
 ]
