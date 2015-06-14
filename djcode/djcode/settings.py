@@ -106,4 +106,6 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/'
 
+
+
 APPEND_SLASH=False
