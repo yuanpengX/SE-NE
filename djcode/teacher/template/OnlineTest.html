@@ -29,15 +29,15 @@
 		<script type="text/javascript">
 		$(function(){
 		$(".digits").countdown({
-		image: "images/digits.png",
+		image: "/static/images/digits.png",
 		format: "hh:mm:ss",
-		startTime: "00:00:30"
+		startTime: "00:10:30"
 		});
 		});
 		</script>
 			
 		<script type="text/javascript">
-		var time = 30; //seconds to count down
+		var time = 630; //seconds to count down
 		function Redirect() {
 		 document.formtest.submit();
 		}
@@ -71,65 +71,92 @@
 
 		<form name="formtest" id="formtest" action={{ URL }} method="post">		{% csrf_token %}
 		{% for Question in QuestionList %}
-		<p>{{ Question.Stem }}</p>
-		<table>
+		{{ forloop.counter }}. {{ Question.Stem }}<br>
 			{% ifequal Question.Type 3 %}
-			<tr>
-			<td>
-				<label><input type="checkbox" name={{ Question.Id }} value="A" > A.</label>
-			</td>
-			<td>
-			{{ Question.OptionA }}
-			</td>
-			</tr>
-			<tr>
-			<td>
-				<label><input type="checkbox" name={{ Question.Id }} value="B" > B.</label>
-			</td>
-			<td>
-			{{ Question.OptionB }}
-			</td>
-			</tr>
-			<tr>
-			<td>
-				<label><input type="checkbox" name={{ Question.Id }} value="C" > C.</label>
-			</td>
-			<td>
-			{{ Question.OptionC }}
-			</td>
-			</tr>
-			<tr>
-			<td>
-				<label><input type="checkbox" name={{ Question.Id }} value="D" > D.</label>
-			</td>
-			<td>
-			{{ Question.OptionD }}
-			</td>
-			</tr>
+			<table>
+				<tr>
+					<td>
+						<label><input type="checkbox" name="{{ Question.QuestionId }}" value="A" > A.</label>
+					</td>
+					<td>
+						{{ Question.OptionA }}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="checkbox" name="{{ Question.QuestionId }}" value="B" > B.</label>
+					</td>
+					<td>
+						{{ Question.OptionB }}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="checkbox" name="{{ Question.QuestionId }}" value="C" > C.</label>
+					</td>
+					<td>
+						{{ Question.OptionC }}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="checkbox" name="{{ Question.QuestionId }}" value="D" > D.</label>
+					</td>
+					<td>
+						{{ Question.OptionD }}
+					</td>
+				</tr>
+			</tabel>
 			{% endifequal %}
 			
 			{% ifequal Question.Type 1 %}
-			<p>
-			<label><input type="radio" name={{ Question.Id }} value="T" > T</label>
-			<label><input type="radio" name={{ Question.Id }} value="F" > F</label>
-			</p>
+			<table>
+				<tr>
+					<label><input type="radio" name="{{ Question.QuestionId }}" value="T" > T</label>
+				</tr>
+				<tr>
+					<label><input type="radio" name="{{ Question.QuestionId }}" value="F" > F</label>
+				</tr>
+			</table>
 			{% endifequal %}
 			
 			{% ifequal Question.Type 2 %}
-			<p>{{ Question.OptionA }}</p>
-			<p>{{ Question.OptionB }}</p>
-			<p>{{ Question.OptionC }}</p>
-			<p>{{ Question.OptionD }}</p>
-			<p>
-			<label><input type="radio" name={{ Question.Id }} value="A" > A</label>
-			<label><input type="radio" name={{ Question.Id }} value="B" > B</label>
-			<label><input type="radio" name={{ Question.Id }} value="C" > C</label>
-			<label><input type="radio" name={{ Question.Id }} value="D" > D</label>
-			</p>
-			
+			<table>
+				<tr>
+					<td>
+						<label><input type="radio" name="{{ Question.QuestionId }}" value="A" > A</label>
+					</td>
+					<td>
+						{{ Question.OptionA }}			
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="radio" name="{{ Question.QuestionId }}" value="B" > B</label>
+					</td>
+					<td>
+						{{ Question.OptionB }}			
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<label><input type="radio" name="{{ Question.QuestionId }}" value="C" > C</label>			
+					</td>
+					<td>
+						{{ Question.OptionC }}			
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="radio" name="{{ Question.QuestionId }}" value="D" > D</label>
+					</td>
+					<td>
+						{{ Question.OptionD }}
+					</td>	
+				</tr>
+			</table>	
 			{% endifequal %}
-		
-			
+		<br>
 		
 	  		  {% endfor %}
 

@@ -39,8 +39,8 @@ class Score(models.Model):
 # Used to Analysis
 class History(models.Model):
     PaperId = models.CharField(max_length=20)
-    StudentId = models.CharField(max_length=10)
-    QIdError = models.CharField(max_length=20)
+    QuestionId = models.CharField(max_length=10,null=True)
+    QIdError = models.IntegerField(null=True)
 
 class OnAuth(models.Model):
     OnAuthClassId = models.CharField(max_length=10)

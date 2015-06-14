@@ -114,6 +114,10 @@ def PaperAutoGenerate(request):
                             QId = Qid,
                             Creator = request.user.username,
                             # jfaj
+                            MaxScore = 0,
+                            MinScore = 10000,
+                            SumScore = 0,
+                            SubmitNum = 0,
                             ClassId = '0000000001',
             #                StartTime = datetime.datetime.now(),
                             #Deadline = Dead )
@@ -205,7 +209,7 @@ def PaperMG(request):
             #                StartTime = datetime.datetime.now(),
                             #Deadline = Dead )
                              Deadline = deadline)
-'''
+
 def PaperAnalysis(request, offset):
     #this view generate PapeAnalysis with ID (get from url)
     PaperView = False
@@ -224,6 +228,8 @@ def PaperAnalysis(request, offset):
     else:
         AuthError = True
     return render_to_response('',{'AuthError':AuthError,'QuestionList':QuestionList,'PaperView':PaperView})
+
+'''
 #finish0.9
 def PaperView(request,offset):
     #this view generate PapeAnalysis with ID (get from url)

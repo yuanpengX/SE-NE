@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect,Http404
 from teacher.models import Paper,Score,Question,Score,History
 from IMS.models import Class_info,Student_user,Course_info,Faculty_user,class_table
 import re
+import datetime
 from django.template.context import RequestContext
 # Create your views here.
 
@@ -34,6 +35,7 @@ def ViewPaper(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/')
     if request.method =='GET':
+        pagename = 'Online test'
         ClassID = '0000000001'
         Paperlist = Paper.objects.filter(ClassId = ClassID)
         PaperList =[]
@@ -58,8 +60,12 @@ def OnlinePaper(request,offset):
             raise Http404
         student = request.user.username
         Student = Score.objects.get(StudentId=student,PaperId=offset)
+        time = Qid.Deadline
+        time = time.replace(tzinfo=None)
         if Student.SubmitTimes > 5:
             return HttpResponse('You have reached max submit time!')
+        if time<(datetime.datetime.now()):
+            return HttpResponse('You have miss the deadline !')
         QuesId = Qid.QId
         #print  type(QuesId)
         QuestionIdList = []
@@ -76,11 +82,13 @@ def ReturnScore(request,offset):
         return HttpResponseRedirect('/')
     if request.method =='POST':
         form = request.POST
+        print form
         paperId = offset[-20:]
         #print len(paperId)
         student = request.user.username
         Student = Score.objects.get(StudentId=student,PaperId = paperId)
-        paper = Paper.objects.get(PaperId = paperId).QId
+        PaperObject = Paper.objects.get(PaperId = paperId)
+        paper = PaperObject.QId
         score = 0
         for i in range(20):
             QuestionL = Question.objects.get(QuestionId=paper[i*20:i*20+20])
@@ -90,10 +98,30 @@ def ReturnScore(request,offset):
             answer = form.getlist(QuestionL.QuestionId)
             print answer
             print Answer
-            if not cmp(answer.sort(),Answer):
+            answer = str(''.join(answer))
+            if not cmp(answer,Answer):
                 score = score+SumScore
+            else:
+                try:
+                    his = History.objects.get(PaperId = paperId,QuestionId = QuestionL.QuestionId)
+                except History.DoesNotExist:
+                    his = History.objects.create(
+                        PaperId = paperId,
+                        QuestionId = QuestionL.QuestionId,
+                        QIdError = 0,
+                    )
+                his.QIdError = his.QIdError +1
         if Student.ValidScore < score:
+            PaperObject.SumScore = PaperObject.SumScore +(score-Student.ValidScore)
             Student.ValidScore=score
+            if score > PaperObject.MaxScore:
+                PaperObject.MaxScore = score
+            else:
+                if score<PaperObject.MinScore:
+                    PaperObject.MinScore = score
+        if Student.SubmitTimes is 0:
+            PaperObject.SubmitNum = PaperObject.SubmitNum+1
+        PaperObject.save()
         Student.SubmitTimes = Student.SubmitTimes+1
         Student.save()
         page = 'You\'ve got %d !'% (score)
