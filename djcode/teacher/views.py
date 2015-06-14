@@ -133,14 +133,78 @@ def PaperD(request,offset):
             raise Http404
         paper.delete()
         return render_to_response('P_auto.html', {'errors': errors},context_instance=RequestContext(request))
-'''
+
 def PaperManualGenerate(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/');
+        return HttpResponseRedirect('/')
     if request.POST:
+        form = request.POST
+        chL = form['ChapterL']
+        chU = form['ChapterU']
+        if chL is u'':
+            chL = 1
+        if chU is u'':
+            chU = 100
+        dfl = form['DifL']
+        dfu = form['DifU']
+        if dfl is u'':
+            dfl = 1
+        if dfu is u'':
+            dfu = 5
+        keyword = form['Keyword']
+        #print form
+        type_i = form['Type']
+        #print type_i
+        try:
+            type_i = int(type_i)
+            dfl = int(dfl)
+            dfu = int(dfu)
+            chL = int(chL)
+            chU = int(chU)
+        except ValueError:
+            return render_to_response('Q_mod.html',{'pagename':'Paper Manual Generate','QuestionList':QuestionList},context_instance=RequestContext(request))
+        if (dfl>dfu) or (chU<chL) or (dfl<=0) or (dfu>6) or chL<=0 or chU>100:
+            return render_to_response('Q_mod.html',{'pagename':'Paper Manual Generate','QuestionList':QuestionList},context_instance=RequestContext(request))
+        if type_i is 0:
+            type_i = [1,2,3]
+        else:
+            type_i = [type_i]
+        if keyword is '':
+            QuestionList = Question.objects.filter(Chapter__in=range(chL,chU+1),Type__in=type_i,Difficulty__in=range(dfl,dfu+1),Flag=1)
+        else:
+            QuestionList = Question.objects.filter(Chapter__in=range(chL,chU+1),Type__in=type_i,Stem__icontains=keyword,Difficulty__in=range(dfl,dfu+1),Flag=1)
+    return render_to_response('Q_mod.html',{'pagename':'modify question','QuestionList':QuestionList},context_instance=RequestContext(request))
 
-    return render_to_response('',locals())
-'''
+def PaperMG(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+    pagename = 'Paper Manual Generate'
+    errors = []
+    if request.POST:
+        form = request.POST
+        qid = form.getlist('Choose')
+        Name = form['PaperName']
+        Dead =form['DeadLine']
+        dead = re.sub(r'\.','-',Dead)
+        mtime = form['mytime']
+        if mtime is u'':
+            errors.append('please input time!')
+            return render_to_response('P_auto.html', {'errors': errors},context_instance=RequestContext(request))
+        deadline = dead+' '+mtime
+        if len(qid) is not 20:
+            errors.append('Number of question is not 20!')
+            return render_to_response('Q_mod.html',locals(),context_instance=RequestContext(request))
+        paperid = re.sub(r'[-:\\.\\ ]','',str(datetime.datetime.now()))
+        paperid = request.user.username + paperid[0:(20-len(request.user.username))]
+        paper = Paper.objects.create(PaperId= paperid,
+                            PaperName = Name,
+                            QId = qid,
+                            Creator = request.user.username,
+                            # jfaj
+                            ClassId = '0000000001',
+            #                StartTime = datetime.datetime.now(),
+                            #Deadline = Dead )
+                             Deadline = deadline)
 '''
 def PaperAnalysis(request, offset):
     #this view generate PapeAnalysis with ID (get from url)
@@ -230,6 +294,7 @@ def QuestionM(request,offset):
             return HttpResponse('<html>Question Do not Exist!</html>')
         form = request.POST;
         option = form.getlist('Option')
+        option= str(''.join(option))
         if len(option)<=0:
             return HttpResponse('<html>No Answer!</html>')
         difficulty = form['Difficulty']
@@ -397,7 +462,7 @@ def QuestionAddForm2(request):
                                 Type = type_i,
                                 Difficulty = difficulty,
                                 Flag = flag,
-                                Answer = answer,
+                                Answer = str(answer),
                                 Chapter = chapter,
                                 CourseId = '00000001',
                                 Score = score,

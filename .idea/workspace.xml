@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1d1f3598-7ea9-48b4-a9d0-88a6ac0d76d0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/db.sqlite3" afterPath="$PROJECT_DIR$/djcode/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/template/base.html" afterPath="$PROJECT_DIR$/djcode/teacher/template/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/djcode/urls.py" afterPath="$PROJECT_DIR$/djcode/djcode/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djcode/teacher/views.py" afterPath="$PROJECT_DIR$/djcode/teacher/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -27,14 +28,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djcode/teacher/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1591512">
-              <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
               <folding>
                 <element signature="e#24#71#0" expanded="true" />
                 <element signature="e#962#1931#0" expanded="false" />
+                <element signature="e#1979#4803#0" expanded="false" />
+                <element signature="e#4837#5222#0" expanded="false" />
+                <element signature="e#5262#6940#0" expanded="false" />
+                <element signature="e#6968#8343#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -93,8 +98,8 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djcode/teacher/template/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.3076923">
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -110,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djcode/djcode/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0795756">
+              <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
               <folding>
                 <element signature="e#615#656#0" expanded="true" />
               </folding>
@@ -159,12 +164,12 @@
         <option value="$PROJECT_DIR$/djcode/student/views.py" />
         <option value="$PROJECT_DIR$/djcode/IMS/urls.py" />
         <option value="$PROJECT_DIR$/djcode/teacher/template/Q_add.html" />
-        <option value="$PROJECT_DIR$/djcode/teacher/template/base.html" />
         <option value="$PROJECT_DIR$/djcode/teacher/template/Q_mod.html" />
         <option value="$PROJECT_DIR$/djcode/djcode/settings.py" />
         <option value="$PROJECT_DIR$/djcode/teacher/adddata.py" />
         <option value="$PROJECT_DIR$/djcode/teacher/models.py" />
         <option value="$PROJECT_DIR$/djcode/djcode/urls.py" />
+        <option value="$PROJECT_DIR$/djcode/teacher/template/base.html" />
         <option value="$PROJECT_DIR$/djcode/teacher/views.py" />
       </list>
     </option>
@@ -215,6 +220,48 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="IMS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IMS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djcode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="student" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -471,7 +518,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434239721312</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="自动生成试卷功能,测试通过&#10;&#10;&#10;&#10;">
+      <created>1434242213610</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1434242213611</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -549,18 +602,12 @@
     <MESSAGE value="第一个可以用的内容&#10;" />
     <MESSAGE value="第一个可以用的内容-判断题&#10;&#10;" />
     <MESSAGE value="自动生成试卷功能&#10;&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="自动生成试卷功能&#10;&#10;&#10;" />
+    <MESSAGE value="自动生成试卷功能,测试通过&#10;&#10;&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="自动生成试卷功能,测试通过&#10;&#10;&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/djcode/teacher/views.py</url>
-          <line>109</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="20" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -890,22 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djcode/djcode/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djcode/teacher/template/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djcode/teacher/template/Q_mod.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -922,29 +953,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djcode/teacher/url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djcode/teacher/template/P_auto.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.589744">
           <caret line="71" column="7" selection-start-line="71" selection-start-column="7" selection-end-line="71" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djcode/djcode/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding>
-            <element signature="e#615#656#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,13 +969,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/djcode/teacher/template/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3076923">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djcode/djcode/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djcode/teacher/url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/djcode/teacher/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1591512">
-          <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
           <folding>
             <element signature="e#24#71#0" expanded="true" />
             <element signature="e#962#1931#0" expanded="false" />
+            <element signature="e#1979#4803#0" expanded="false" />
+            <element signature="e#4837#5222#0" expanded="false" />
+            <element signature="e#5262#6940#0" expanded="false" />
+            <element signature="e#6968#8343#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djcode/djcode/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0795756">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+          <folding>
+            <element signature="e#615#656#0" expanded="true" />
           </folding>
         </state>
       </provider>
