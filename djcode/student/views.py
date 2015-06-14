@@ -28,11 +28,11 @@ def ViewClass(request):
         #print type(ClassId)
             CourseName = ClassName.class_id.course_id.name
             ClassList.append({'Name': CourseName+' '+ClassId,'Url':request.get_host()+'/student/'+ClassId+'/'})
-        return render_to_response('Choose_Class.html',{'ClassList':ClassList})
+        return render_to_response('Choose_Class.html',{'ClassList':ClassList},context_instance=RequestContext(request))
 
 def ViewPaper(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/ims/')
+        return HttpResponseRedirect('/')
     if request.method =='GET':
         ClassID = '0000000001'
         Paperlist = Paper.objects.filter(ClassId = ClassID)
@@ -49,36 +49,52 @@ def ViewPaper(request):
 
 def OnlinePaper(request,offset):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/login/')
-    if request.method == 'GET':
+        return HttpResponseRedirect('/')
+    if request.method == 'POST':
         try:
-            QId = Paper.objects.get(PaperId = offset)
+            #print offset
+            Qid = Paper.objects.get(PaperId = offset)
         except Paper.DoesNotExist:
             raise Http404
-        QuesId = QId['QId']
-        QuestionList = []
+        student = request.user.username
+        Student = Score.objects.get(StudentId=student,PaperId=offset)
+        if Student.SubmitTimes > 5:
+            return HttpResponse('You have reached max submit time!')
+        QuesId = Qid.QId
+        #print  type(QuesId)
+        QuestionIdList = []
         for i in range(20):
-            QuestionList[i] = Question.objects.filter(QuestionId=QuesId[i*20:i*20+19])
-            #if QuestionList[i].
-        return render_to_response('',{'QuestionList':QuestionList})
+            mid = QuesId[i*20:i*20+20]
+            #print mid
+            QuestionIdList.append(Question.objects.get(QuestionId=mid))
+        #print QuestionIdList
+        URL = '/student/test/score/'+request.user.username+offset+'/'
+        return render_to_response('OnlineTest.html',{'QuestionList':QuestionIdList,'URL':URL,'pagename':'Online Test'},context_instance=RequestContext(request))
 
 def ReturnScore(request,offset):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/user_auth/')
+        return HttpResponseRedirect('/')
     if request.method =='POST':
-        url = request.get_full_path()
-        PaperId = re.search(r'/student/test/\d{20}/',url).group()
-        PaperId = PaperId[14:-1]
-        paper = Paper.objects.get(PaperId).QId
+        form = request.POST
+        paperId = offset[-20:]
+        #print len(paperId)
+        student = request.user.username
+        Student = Score.objects.get(StudentId=student,PaperId = paperId)
+        paper = Paper.objects.get(PaperId = paperId).QId
         score = 0
         for i in range(20):
-            QuestionL = Question.objects.get(QuestionId=paper[i*20:i*20+19])
-            Answer = QuestionL['Answer']
-            SumScore = QuestionL['score']
+            QuestionL = Question.objects.get(QuestionId=paper[i*20:i*20+20])
+            Answer = QuestionL.Answer
+            SumScore = QuestionL.Score
             Id= '%s' % i
-            answer = request.getlist('Question'+Id)
+            answer = form.getlist(QuestionL.QuestionId)
+            print answer
+            print Answer
             if not cmp(answer.sort(),Answer):
                 score = score+SumScore
-        return render_to_response('',{'score':score})
-
-
+        if Student.ValidScore < score:
+            Student.ValidScore=score
+        Student.SubmitTimes = Student.SubmitTimes+1
+        Student.save()
+        page = 'You\'ve got %d !'% (score)
+        return HttpResponse(page)
